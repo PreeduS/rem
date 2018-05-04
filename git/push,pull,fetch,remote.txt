@@ -1,0 +1,23 @@
+﻿
+git remote add nameOrigin urlGitHub
+
+git push -u nameOrigin master		//-u - remember parameters
+			
+git push <nameOrigin> <commit SHA>:<remotebranchname>	//ex:git push origin commit-id:master
+
+
+						
+git pull nameOrigin master		//git pull link branch
+
+git fetch nameOrigin master		//pull but not merge
+					
+git pull = git fetch + git merge FETCH_HEAD  
+
+
+
+
+
+git remote 	//list
+git branch	//or --list       //list local
+		//-r 		  //list remote
+		//-a              //list all

@@ -1,0 +1,6 @@
+
+git config --global user.name "name"
+git config --global user.email "name"			//--local/global
+
+git config --list					//--list/l
+git config --global --list				

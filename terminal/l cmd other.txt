@@ -1,0 +1,70 @@
+check:
+grep
+less
+
+
+pbcopy
+
+pm2
+
+
+------------------------------------------------------------------------------------------------
+
+ls file | grep search
+grep search path			//-i: ignore case, -c: count, -n: line number
+							//-e "search"
+
+tail file1 file2 etc		//last 10 lines
+							//-n5		//last 5 lines
+							//-n+3		//starting from 3							
+
+
+
+							
+---
+wc filename				//word count - returns nr lines, nr words, nr chars
+
+
+| sort
+| cut -d":" -f1				//split by ':' select field 1 	 //-f1,3
+
+
+
+------------------------------------------------------------------------------------------------
+
+
+apt-get install name name2 etc
+apt-get remove name 
+apt-cache search name
+apt-get update
+
+------------------------------------------------------------------------------------------------
+alias ls='ls -l'
+unalias ls
+
+/home/username			//.bashrc file			//add comments here to run at new terminal init
+
+
+
+---
+ls filename && echo "done"
+netstat -tulpn
+----
+curl "link"
+
+
+--------------
+rsync
+
+------------------------------------------------------------------------------------------------
+
+w
+who
+whoami
+id
+top
+
+ifconfig
+
+
+

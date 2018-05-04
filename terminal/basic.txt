@@ -1,0 +1,47 @@
+pwd
+ls
+mkdir
+cp fileA.ext copyFileA.ext				//copy files / dirs( -r recursive)
+mv fileName.ext path/renamed.ext			//move,rename
+mv fileName.ext path/					
+rm fileName.ext						//remove file( -r recursive)
+							//-v(--verbose)
+rmdir name
+
+
+touch fileName							//create
+open fileName
+
+
+------------------------------------------------------------------------
+cat fileName							//display contents
+	fileNameA filenameB etc				//concatenation display
+
+cat > fileName							//write to file, ctrl+d to save
+cat >> fileName							//append to file, ctrl+d to save
+
+cat > fileName << EOF					//tag 'EOF' as and end of line break
+
+cat file1.txt > file2.txt				//write from 1 to 2	(overwrite)
+cat file1.txt >> file2.txt				//append from 1 to 2	
+
+cat file1.txt file2.txt > file3.txt		// > , >>
+
+------------------------------------------------------------------------
+//0-STDIN, 1-STDOUT, 2-STDERR
+
+echo "text" 1> someFile		
+
+ls ~ nothing 2> somefile					// save/redirect only errors, output is sent to terminal
+
+ls ~ nothing > somefile	2>&1
+										
+								// 2>&1: Redirect stderr to "where stdout is currently going"
+
+
+
+
+tee someFile		//writes both to STDOUT & to file
+					//-a(append)
+ls ~ nothing 2>&1 | tee someFile
+

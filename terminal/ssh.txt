@@ -1,0 +1,40 @@
+
+ssh username@serverip -p portNr				//p 22 - default
+exit
+
+ssh-keygen -R ip
+
+apt-get update
+apt-get install openssh-server
+service ssh restart
+
+/etc/hostname
+/etc/hosts
+/etc/network/interfaces
+
+
+ssh-keygen -t rsa -b 4096
+								//-C "Comment"
+
+//copy id_rsa.pub to target machine .ssh folder
+scp ~/.ssh/id_rsa.pub pred@192.168.56.101:/home/pred/.ssh/uploaded_key.pub
+
+cat ~/.ssh/uploaded_key.pub >> ~/.ssh/authorized_keys
+
+//permissions
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/*
+
+//set key only auth
+//edit /etc/ssh/ssh_config        //backup first(.bak)
+#PasswordAuthentication 
+
+service ssh restart
+
+
+//------
+/etc/ssh/ssh_config
+#PermitRootLogin
+
+//create new user
+usermod -aG sudo username

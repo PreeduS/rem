@@ -1,0 +1,16 @@
+find *.txt
+
+find . -size +1M								//+1M, -1M 
+
+find . -type f -iname "*.txt"           					//f = file
+find . -type f -not -iname "*.txt"          
+										//-maxdepth 1		//limit recursive search
+
+
+
+find . "*.js" -exec	grep "function"	{} +   		//'{} +' = flag to end exec flag							
+find . "*.js" -exec	grep "function"	{} + > outputToFile.txt		
+
+									
+grep "find some text" ./*				//-i = case insensitive		
+							//-n = show line nr

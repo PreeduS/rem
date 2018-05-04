@@ -1,0 +1,47 @@
+//permissions
+//files
+//-rwe						//ls -l
+chmod 7	fileName			//all rights 7 = 111(rwe)
+chmod 777 fileName			//all rights - owner,group,everyoneElse
+
+chmod u+r fileName			//update permissions
+							//chmod u+, chmod g+, chmod o+		//user,group,other
+							//+ add,- remove permission
+							//u+rwx
+							//o=rwx	//others = read,write,execute
+							//folder -R recursive
+
+chown owner fileName					//change owner
+chown owner:group fileName				//change owner & group
+chown -R owner:group folderName			//-R for all files inside
+
+
+
+
+sudo useradd -m -d /home/username -s /bin/bash/username 			//-u 1501
+																	//-m create home dir
+																	//-g groupName		//-g users
+
+																	
+passwd								//change pass, on current user											
+passwd username
+userdel username					//-r del user dir also
+su userName							//switch user
+
+groups								//list groups
+groupadd groupName
+groupdel groupName
+gpasswd -a userName groupName		//add user to group		//-a add
+gpasswd -d userName groupName		//add user to group		//-d del
+									//gpasswd -a userA,userB groupName
+
+usermod -aG sudo username						//aG - append group
+												//g - primary group, G - other groups
+usermod -G groupName1,groupName2 username 		//will replace other groups
+//adduser username
+id username
+
+/etc/passwd
+/etc/shadow								//! - login disable, * - no pass set
+/etc/group
+

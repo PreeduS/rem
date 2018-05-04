@@ -1,0 +1,13 @@
+npm show <name>@* version				//versions - show pre-releases
+							//aliases: view,info,v
+
+
+
+______________________________________________________
+
+nvm install latest
+
+nvm use [version]
+
+nvm list
+nvm list available

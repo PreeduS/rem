@@ -1,0 +1,11 @@
+//vim
+i
+
+:x (:wq) 		//save+quit  
+:w 			//save/write 
+:q 			//quit
+:q!			//quit, ignore changes
+
+
+x	//del
+u	//undo
