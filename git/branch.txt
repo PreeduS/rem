@@ -1,0 +1,10 @@
+git branch      		//log current
+git branch -a			//log all
+
+git branch name			//create new
+git branch -d name      	//delete
+
+git checkout branch_name   	//switch branch
+				//-b create the branch
+
+git merge branch_name		//from current one

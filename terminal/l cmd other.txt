@@ -45,16 +45,26 @@ unalias ls
 /home/username			//.bashrc file			//add comments here to run at new terminal init
 
 
+---
+/bin, /usr/bin  - programs
+/dev		- devices
+/etc		- system config
+/home		- user home folders
+/var		- runtime files: ex logs, db files
 
 ---
 ls filename && echo "done"
 netstat -tulpn
 ----
 curl "link"
-
-
 --------------
 rsync
+--------------
+//check:
+command &  	//& after - background process
+fg		//back
+
+sh -c		//child shell
 
 ------------------------------------------------------------------------------------------------
 
@@ -62,9 +72,60 @@ w
 who
 whoami
 id
-top
+
+top		//processes
+ps
+kill <processId> 	//default close signal
+kill -9 <processId> 	//force close
 
 ifconfig
 
 
+
+
+
+------------------------------------------------------------------------------------------------
+//nginx temp
+
+install nginx			//apt-get install nginx	
+cd /etc/nginx/
+
+//nginx.conf
+...
+include /etc/nginx/conf.d/*.conf;
+include /etc/nginx/sites-enabled/*;
+
+//create fileName.conf in conf.d
+ex config: 
+server{
+	root /var/www;
+	index index.html;
+	server_name localhost;
+	location / {...}
+}
+
+/var
+chown -R www-data: www				//www-data - default user that nginx uses
+
+
+systemctl start nginx 
+						//service nginx restart
+
+
+
+/etc/systemd/system
+systemctl enable filename.service
+
+
+-------
+
+netstat -an | more
+
+-------
+
+dotnet publish -c Release			//-c: config
+app/bin/Release/netcoreapp/fileName.dll	
+app/bin/Release/netcoreapp/publish/fileName.dll	
+
+dotnet fileName.dll
 

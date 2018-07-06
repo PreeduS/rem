@@ -1,0 +1,13 @@
+
+git stash save "stash text"		//add the changes in the stash and reverts the working directory
+git stash list
+git stash apply stashIdRefList		//git stash apply stash@{0}		//apply that stash
+git stash drop stashIdRefList		//delete stash but don't apply it
+git stash pop				//apply the last added stash(first in list) and remove it
+
+
+git clean -f -d				//-f [force], -d [delete directories] 
+
+
+git clean -n				//-n [show waht would remove]
+

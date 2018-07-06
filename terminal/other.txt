@@ -14,3 +14,5 @@ find . "*.js" -exec	grep "function"	{} + > outputToFile.txt
 									
 grep "find some text" ./*				//-i = case insensitive		
 							//-n = show line nr
+
+cat file | grep search

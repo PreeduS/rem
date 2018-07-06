@@ -1,6 +1,6 @@
 npm show <name>@* version				//versions - show pre-releases
 							//aliases: view,info,v
-
+npm view <package-name> version
 
 
 ______________________________________________________
