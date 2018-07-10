@@ -2,19 +2,21 @@
 ssh username@serverip -p portNr				//p 22 - default
 exit
 
-ssh-keygen -R ip
+ssh-keygen -R ip			//-R removes all keys from hostname/ip
 
 apt-get update
 apt-get install openssh-server
-service ssh restart
+service ssh restart							//service ssh status
 
 /etc/hostname
 /etc/hosts
 /etc/network/interfaces
 
 
-ssh-keygen -t rsa -b 4096
+ssh-keygen -t rsa -b 4096		//generate public & private keys
+								//-t: type, -b bits
 								//-C "Comment"
+
 
 //copy id_rsa.pub to target machine .ssh folder
 scp ~/.ssh/id_rsa.pub pred@192.168.56.101:/home/pred/.ssh/uploaded_key.pub
@@ -38,3 +40,37 @@ service ssh restart
 
 //create new user
 usermod -aG sudo username
+
+
+
+
+
+--------------------
+//scp
+//-P port
+//-i path to local public key
+
+scp -r dirName pred@192.168.56.101:/home/pred
+
+//from remote to local
+scp pred@192.168.56.101:/home/pred/filename /home/pred/targetName
+
+
+--------------------
+//rsync
+
+rsync basePath targetPath
+-r  //recursive, move folders
+-n, --dry-run; -v, --verbose
+-a, --archive					//preserve extra information(symlinks, permissions, modification times, group, owner, devices, specials)
+--delete						//deletes extra files from target, if not present in base
+
+-z, --compress					//during the transfer
+-P, --progress
+
+
+
+rsync basePath pred@192.168.56.101:~/Public/...
+
+
+

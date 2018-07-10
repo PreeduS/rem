@@ -16,3 +16,49 @@ grep "find some text" ./*				//-i = case insensitive
 							//-n = show line nr
 
 cat file | grep search
+
+
+
+
+
+
+
+
+
+
+----------------------------------------------------------------
+//cron
+crontab -l
+
+# ┌───────────── minute (0 - 59)
+# │ ┌───────────── hour (0 - 23)
+# │ │ ┌───────────── day of month (1 - 31)
+# │ │ │ ┌───────────── month (1 - 12)
+# │ │ │ │ ┌───────────── day of week (0 - 6) (Sunday to Saturday;
+# │ │ │ │ │                                       7 is also Sunday on some systems)
+# │ │ │ │ │
+# │ │ │ │ │
+# * * * * *  command to execute
+
+crontab -e
+crontab -u username -e
+* * * * * echo 'test' >> ~/Desktop/temp.txt
+0 0,12 * * 0 command
+*/10 * * * * command						//every 10 mins
+0 0-12 * * * command						//interval					
+
+
+----------------------------------------------------------------
+//watch - execute command at interval
+-n, --interval;	//seconds,ex: 1,5
+-d, --differences	//highlight
+watch free -m
+
+----------------------------------------------------------------
+//tail, head - print last/first 10 lines
+-f, --follow 	//watch, append file changes 		//tail only		//-F
+-n, --lines		//nr lines to print, or simply -nr
+tail -3 filename
+
+
+----------------------------------------------------------------

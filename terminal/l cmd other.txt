@@ -58,7 +58,7 @@ netstat -tulpn
 ----
 curl "link"
 --------------
-rsync
+
 --------------
 //check:
 command &  	//& after - background process
@@ -78,10 +78,17 @@ ps
 kill <processId> 	//default close signal
 kill -9 <processId> 	//force close
 
-ifconfig
+ifconfig			
+ifconfig <interface>				//ifconfig eth0
+ifconfig <interface> up				//ifconfig <interface> down		//enable/disable connection
+//HWaddr - hardware address/MAC
+//inet addr - internet address
+//RX,TX - received, transmitted packets
 
 
-
+netstat			//netstat -at
+//-a,--all; -l,--listening; -t,--tcp; -u,--udp
+//-tupln
 
 
 ------------------------------------------------------------------------------------------------
