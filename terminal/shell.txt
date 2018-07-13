@@ -1,0 +1,110 @@
+#!/bin/bash
+
+
+
+declare -r	NUM1 = 1			#constant
+num2 = 2
+sum = $((NUM1 + num2)) 
+echo "sum = $sum"
+
+someVar = "test"
+someFunc(){
+	local someVar = "test2"
+	#local v1 = $1	#get params, someFunc var1 var2
+	return
+}
+
+someFunc
+
+echo "someVar = $someVar"
+
+
+
+read -p "Enter a value..." someVar			#p : prompt, someVar someVar2 etc			
+read -sp "Enter a password" someVar			#s : silent		
+read v1 v2 v3	
+read -a names								#a : array
+echo "name = ${names[0]}"
+
+read										#empty read -> $REPLY var
+echo "defaults as $REPLY"				
+
+
+
+#-----------------------------------
+#conditions
+
+echo "$someVar"
+
+if [$someVar -ge 1]					# -ge : greater than or equal
+then
+	echo ""
+elif[$someVar -eq 2]		
+then
+	echo ""
+else
+	echo ""
+fi					//end if
+
+
+#integer comparation
+#-eq : ==
+#-ne : !=
+#-gt : >
+#-ge : >=
+#-lt : <
+#-le : <=
+
+#string comparation
+#["$a" == "$b"]						#=,==,!= etc; = same as ==
+#[["$a" > "$b"]]					#<,>; ASCII based
+
+#for normal operators				#	((  ((...)) && ((...))    ))
+if((someVar == 1)); then				
+	echo ""
+fi
+
+
+#----
+touch someFile && vim someFile 
+[ -d someDir ] || mkdir someDir
+
+if [ "$someVar" ]; then
+	echo "$someVar is not null"
+fi
+
+if [ -z "$someVar" ]; then							
+	echo "$someVar has no value"
+fi
+												# -e : exists
+												# -f : is regular file
+												# -d : is dir
+												# -s : is empty
+												# -r, -w, -x : has rwx permissions
+
+
+
+#-----------------------------------
+
+/etc/shells					#available
+
+
+
+#system variables
+$BASH, $HOME, $PWD
+
+
+
+./currentFile.sh var1 var2 var3
+
+#echo $1 $2 $3 					# $0 : currentFile.sh
+
+args = ("$@")					# converts all args as array
+
+								# $# : args count
+
+
+								
+								
+#-----------------------------------							
+#7

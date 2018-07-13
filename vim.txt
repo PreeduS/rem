@@ -4,3 +4,9 @@ i
 :w 			//save/write 
 :q 			//quit
 
+
+:set number
+:set tabstop=2
+
+
+// .vimrc

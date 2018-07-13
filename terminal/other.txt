@@ -1,25 +1,28 @@
 find *.txt
 
-find . -size +1M								//+1M, -1M 
+find . -size +1M											//+1M, -1M 			// +/- : greater/less than
 
-find . -type f -iname "*.txt"           					//f = file
-find . -type f -not -iname "*.txt"          
+find . -type f -iname "*.txt"           					//-type				//f = file, d = directory
+find . -type f -not -iname "*.txt"          	
+															//-name 			//search pattern
+															//-iname			// case insensitive -name
 										//-maxdepth 1		//limit recursive search
-
+																
+															//-path pattern		// "./sr*sc" can match "./src/misc"
+															
+															//-regex pattern	//match on the whole path, not a search
+															
+									
 
 
 find . "*.js" -exec	grep "function"	{} +   		//'{} +' = flag to end exec flag							
-find . "*.js" -exec	grep "function"	{} + > outputToFile.txt		
+find . "*.js" -exec	grep "function"	{} + > outputToFile.txt	
 
-									
-grep "find some text" ./*				//-i = case insensitive		
-							//-n = show line nr
+
+grep "find some text" ./*									//-i = case insensitive		
+															//-n = show line nr
 
 cat file | grep search
-
-
-
-
 
 
 
@@ -62,3 +65,17 @@ tail -3 filename
 
 
 ----------------------------------------------------------------
+//less
+less filename
+:G 						//jump end
+:1G, g					//jump start
+:[space]				//jump by page
+:/searchValue			//next
+:?searcHValue			//prev
+						//:n 			//next/prev
+						
+						
+						
+		
+
+

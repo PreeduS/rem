@@ -29,6 +29,7 @@ cat file1.txt file2.txt > file3.txt		// > , >>
 
 ------------------------------------------------------------------------
 //0-STDIN, 1-STDOUT, 2-STDERR
+//1-STDOUT - default/implied
 
 echo "text" 1> someFile		
 
@@ -44,4 +45,10 @@ ls ~ nothing > somefile	2>&1
 tee someFile		//writes both to STDOUT & to file
 					//-a(append)
 ls ~ nothing 2>&1 | tee someFile
+
+
+cat < filename
+
+
+
 

@@ -54,7 +54,7 @@ unalias ls
 
 ---
 ls filename && echo "done"
-netstat -tulpn
+
 ----
 curl "link"
 --------------
@@ -72,12 +72,25 @@ w
 who
 whoami
 id
+df						//list disk space
 
-top		//processes
-ps
-kill <processId> 	//default close signal
+top						//display processes
+htop					//interactive process viewer
+ps						//-aux
+kill <processId> 		//default close signal
 kill -9 <processId> 	//force close
+						//-l: list signals
+						//15 SIGTERM default/implied
+						
+						
+nice -n 10 ./someFile.sh &		//run a program with modified scheduling priority					
+								//-n 	//range from -20 (most favorable scheduling) to 19 (least favorable).
+								//default 10
 
+
+renice -n 17 -p 1134				//change priority of running processes
+									//-p, --pid
+							
 ifconfig			
 ifconfig <interface>				//ifconfig eth0
 ifconfig <interface> up				//ifconfig <interface> down		//enable/disable connection
