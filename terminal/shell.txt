@@ -11,6 +11,7 @@ someVar = "test"
 someFunc(){
 	local someVar = "test2"
 	#local v1 = $1	#get params, someFunc var1 var2
+	#cd $1;
 	return
 }
 
@@ -108,3 +109,13 @@ args = ("$@")					# converts all args as array
 								
 #-----------------------------------							
 #7
+
+
+#echo {a,b,c}end -> aend bend cend			//brace expansion
+#echo $(echo foo $(echo bar))
+#echo ${{expression}}
+
+foo*bar			//* (match any chars) 
+foo?bar			//* (match any single char) 
+
+

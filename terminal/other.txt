@@ -11,9 +11,10 @@ find . -type f -not -iname "*.txt"
 															//-path pattern		// "./sr*sc" can match "./src/misc"
 															
 															//-regex pattern	//match on the whole path, not a search
-															
-									
-
+															//-mtime N			//File's data was last modified n*24 hours ago
+															//-mtime -1			//less than 1 day ago
+															//-mtime +1			//more than 1 day ago
+find path -name file
 
 find . "*.js" -exec	grep "function"	{} +   		//'{} +' = flag to end exec flag							
 find . "*.js" -exec	grep "function"	{} + > outputToFile.txt	
@@ -73,9 +74,23 @@ less filename
 :/searchValue			//next
 :?searcHValue			//prev
 						//:n 			//next/prev
-						
-						
-						
+										
+----------------------------------------------------------------		
+//calendar, date
+cal, ncal 			//cal year, cal month year
+					//-n : range in months
+					
+date				//show
+					//-s, --set
+					//+FORMAT		//ex: date +%d-%m-%Y		
 		
+----------------------------------------------------------------
 
+
+
+
+
+
+
+	
 
