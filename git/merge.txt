@@ -1,0 +1,6 @@
+
+
+git checkout --theirs <file>
+
+
+git diff --name-only --diff-filter=U		//unmerged files/conflicts

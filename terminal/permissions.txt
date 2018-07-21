@@ -22,7 +22,8 @@ chown -R owner:group folderName			//-R for all files inside
 ------------------------------------------------------------------------------------------------
 //users
 
-sudo useradd -m -d /home/username -s /bin/bash/username 			//-u, --uid 1501			//unique user id
+useradd -m -d /home/username -s /bin/bash/ -g users	username	 			
+																	//-u, --uid 1501			//unique user id
 																	//-m, --create-home		 	//create home dir, files in skeleton directory will be copied(defined with -k)
 																	//-d, --home HOME_DIR		//define path																
 																	//-g groupName				//-g users
@@ -30,7 +31,7 @@ sudo useradd -m -d /home/username -s /bin/bash/username 			//-u, --uid 1501			//
 																	//-k, --skel SKEL_DIR		//default: SKEL  var in /etc/default/useradd
 																								//default: /etc/skel/	
 																								//valid with -m
-
+																	//-c, --comment
 																	
 passwd																//change pass, on current user											
 passwd username
@@ -54,11 +55,14 @@ usermod -aG sudo username						//aG - append group
 												//g - primary group, G - other groups
 usermod -G groupName1,groupName2 username 		//will replace other groups
 
+usermod -L username								//-L, --lock
+												//-U, --unlock
+												//-d, --home HOME_DIR
 
 //adduser username
 id username
 
 /etc/passwd
-/etc/shadow								//! - login disable, * - no pass set
+/etc/shadow								//! - login disabled, * - no pass set
 /etc/group
 /etc/skel/

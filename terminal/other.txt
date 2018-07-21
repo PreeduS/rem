@@ -31,7 +31,7 @@ cat file | grep search
 
 ----------------------------------------------------------------
 //cron
-crontab -l
+crontab -l									//list
 
 # ┌───────────── minute (0 - 59)
 # │ ┌───────────── hour (0 - 23)
@@ -43,13 +43,21 @@ crontab -l
 # │ │ │ │ │
 # * * * * *  command to execute
 
-crontab -e
-crontab -u username -e
+//day of month & day of week - run when either field matches(OR), other fields use AND
+
+crontab -e									//edit
+crontab -u username -e						//edit user specific crontab
 * * * * * echo 'test' >> ~/Desktop/temp.txt
-0 0,12 * * 0 command
+0 0,12 * * 0 command						//both 0 & 12
 */10 * * * * command						//every 10 mins
 0 0-12 * * * command						//interval					
+											//ex: 0-12/2	//range+interval
 
+/var/spool/cron/crontabs/username			//user specific
+/etc/cron.d/								//package specific
+/etc/crontab								//system specific
+/etc/cron.allow								//list for users that can add crontabs
+/etc/cron.deny								//list for users that can't add crontabs
 
 ----------------------------------------------------------------
 //watch - execute command at interval

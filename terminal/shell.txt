@@ -86,7 +86,7 @@ fi
 
 #-----------------------------------
 
-/etc/shells					#available
+/etc/shells					#available shells
 
 
 
@@ -103,8 +103,7 @@ args = ("$@")					# converts all args as array
 
 								# $# : args count
 
-
-								
+						
 								
 #-----------------------------------							
 #7
