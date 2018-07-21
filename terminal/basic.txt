@@ -50,5 +50,24 @@ ls ~ nothing 2>&1 | tee someFile
 cat < filename
 
 
+------------------------------------------------------------------------
+
+command1 && command2 && command3	//checks to see if the previous command had an exit status of zero and will NOT continue
+command1 ; command2 ; command3		//no checks
+command1 || command2				//if previous fails, run next
+
+command1 &							//background
+
+//return status 	//0 - ok
+					//non-0 - error
+					
+					
+------------------------------------------------------------------------
+var=test
+echo $var		//test
+echo "$var"		//test
+echo '$var'		//$var		//text itself
+echo ${var}2	//test2
+
 
 

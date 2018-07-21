@@ -22,14 +22,17 @@ tail file1 file2 etc		//last 10 lines
 
 							
 ---
-wc filename				//word count - returns nr lines, nr words, nr chars
+wc filename					//word count - returns nr lines, nr words, nr chars
+							//-w,--words; -l,--lines; -m,--chars; -c,--bytes
+							
 
-
+							
 | sort
 | cut -d":" -f1				//split by ':' select field 1 	 //-f1,3
 
 
 
+					
 ------------------------------------------------------------------------------------------------
 
 
@@ -59,13 +62,22 @@ ls filename && echo "done"
 curl "link"
 --------------
 
---------------
+------------------------------------------------------------------------------------------------
 //check:
 command &  	//& after - background process
-fg		//back
+sleep 10 &
 
+jobs				//list background, suspended tasks
+
+fg [jobID]			//back, move to foreground, id defaults as last jobs id 
+bg [jobID]			//move to background, ex: tasks suspended with ctrl+z
+					//or %jobID
+kill %jobID			
+	
 sh -c		//child shell
 
+(echo test)					//subshell
+{ echo 1; echo 2; } | cat	//current shell, spacing required
 ------------------------------------------------------------------------------------------------
 
 w
