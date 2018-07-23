@@ -42,7 +42,8 @@ userdel username					//-r, --remove 					//remove user home directory also
 									//-f, --force					//remove if the user is still logged in, or home dir is shared with other user
 
 su userName							//switch user
-
+su -								//switch to root, -l or - : set the environment to match the changed user
+	
 groups								//list groups
 									// /etc/group
 groupadd groupName

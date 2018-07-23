@@ -1,6 +1,7 @@
 
 ssh username@serverip -p portNr				//p 22 - default
 exit
+//logout
 
 ssh-keygen -R ip			//-R removes all keys from hostname/ip
 
@@ -28,14 +29,14 @@ chmod 700 ~/.ssh
 chmod 600 ~/.ssh/*
 
 //set key only auth
-//edit /etc/ssh/ssh_config        //backup first(.bak)
+//edit /etc/ssh/sshd_config        //backup first(.bak)
 #PasswordAuthentication 
 
-service ssh restart
+service ssh restart					//or sshd
 
 
 //------
-/etc/ssh/ssh_config
+/etc/ssh/sshd_config
 #PermitRootLogin
 
 //create new user
@@ -43,7 +44,8 @@ usermod -aG sudo username
 
 
 
-
+sshd_config		#server config
+ssh_config		#client config
 
 --------------------
 //scp
@@ -73,4 +75,15 @@ rsync basePath targetPath
 rsync basePath pred@192.168.56.101:~/Public/...
 
 
+
+--------------------
+//ssh proxy
+
+ssh -N -D 8080 pred@ip -p 443
+
+-N 			 					//do not execute a remote command, useful for just forwarding ports
+-D [bind_address:]port 			//listen to [bind_address:]port (local machine), then forward
+
+//sshd_config					//ex: change port to 443
+//then configure browser to use the proxy
 

@@ -114,7 +114,15 @@ args = ("$@")					# converts all args as array
 #echo $(echo foo $(echo bar))
 #echo ${{expression}}
 
+echo "text $(command)"											
+echo "text `command`"	
+
 foo*bar			//* (match any chars) 
 foo?bar			//* (match any single char) 
 
+
+
+exit 0		
+
+source script.sh		//or : . script.sh		//vars are now available in the main shell		
 
