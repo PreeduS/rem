@@ -1,0 +1,64 @@
+//check later
+
+pbcopy
+pm2
+include
+killall serviceName
+
+
+
+//osdata
+//Jason Wertz
+
+----
+//softlink - if moved the link is lost
+		//each has its own inode
+
+ln -s test/someFile softLinkFile
+
+ln -fs newPath softLinkFile		//f - unlink
+
+
+//hardlink - same inode
+ln test/someFile hardLinkFile
+
+
+
+
+------------------------------------------------------------------------------------------------
+
+command &  	//& after - background process
+sleep 10 &
+
+jobs				//list background, suspended tasks
+
+fg [jobID]			//back, move to foreground, id defaults as last jobs id 
+bg [jobID]			//move to background, ex: tasks suspended with ctrl+z
+					//or %jobID
+					
+					//ctrl+z	//suspend/pause running task
+								//resume by moving back to background
+kill %jobID			
+	
+	
+	
+sh -c		//child shell
+
+(echo test)					//subshell
+{ echo 1; echo 2; } | cat	//current shell, spacing required
+
+
+
+------------
+.bashrc				//non interactive shell, new terminal;	ex: su, bash
+
+.bash_profile		//interactive shell, needs relogin;		ex: ssh; su -l
+
+
+$(echo "test")		//subshell
+
+					//ctrl+d - exit
+					
+					
+sleep 5 &
+------------

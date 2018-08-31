@@ -1,34 +1,11 @@
-check:
-grep
-less
 
 
-pbcopy
-
-pm2
-
-
-------------------------------------------------------------------------------------------------
-
-ls file | grep search
-grep search path			//-i: ignore case, -c: count, -n: line number
-							//-e "search"
-
-tail file1 file2 etc		//last 10 lines
-							//-n5		//last 5 lines
-							//-n+3		//starting from 3							
-
-
-
-							
----
 wc filename					//word count - returns nr lines, nr words, nr chars
 							//-w,--words; -l,--lines; -m,--chars; -c,--bytes
 							
 
 							
 | sort
-| cut -d":" -f1				//split by ':' select field 1 	 //-f1,3
 
 
 
@@ -55,30 +32,14 @@ unalias ls
 /home		- user home folders
 /var		- runtime files: ex logs, db files
 
----
-ls filename && echo "done"
+
 
 ----
 curl "link"
 --------------
 
 ------------------------------------------------------------------------------------------------
-//check:
-command &  	//& after - background process
-sleep 10 &
 
-jobs				//list background, suspended tasks
-
-fg [jobID]			//back, move to foreground, id defaults as last jobs id 
-bg [jobID]			//move to background, ex: tasks suspended with ctrl+z
-					//or %jobID
-kill %jobID			
-	
-sh -c		//child shell
-
-(echo test)					//subshell
-{ echo 1; echo 2; } | cat	//current shell, spacing required
-------------------------------------------------------------------------------------------------
 
 w
 who
@@ -86,14 +47,18 @@ whoami
 id
 df						//list disk space
 
+//processes
+
 top						//display processes
 htop					//interactive process viewer
-ps						//-aux
+ps						//display processes
+						//ps aux | grep nginx
 kill <processId> 		//default close signal
 kill -9 <processId> 	//force close
 						//-l: list signals
 						//15 SIGTERM default/implied
 						
+	//check killall		//killall name			
 						
 nice -n 10 ./someFile.sh &		//run a program with modified scheduling priority					
 								//-n 	//range from -20 (most favorable scheduling) to 19 (least favorable).
@@ -102,7 +67,9 @@ nice -n 10 ./someFile.sh &		//run a program with modified scheduling priority
 
 renice -n 17 -p 1134				//change priority of running processes
 									//-p, --pid
-							
+			
+jobs
+			
 ifconfig			
 ifconfig <interface>				//ifconfig eth0
 ifconfig <interface> up				//ifconfig <interface> down		//enable/disable connection
@@ -117,47 +84,48 @@ netstat			//netstat -at
 
 
 ------------------------------------------------------------------------------------------------
-//nginx temp
-
-install nginx			//apt-get install nginx	
-cd /etc/nginx/
-
-//nginx.conf
-...
-include /etc/nginx/conf.d/*.conf;
-include /etc/nginx/sites-enabled/*;
-
-//create fileName.conf in conf.d
-ex config: 
-server{
-	root /var/www;
-	index index.html;
-	server_name localhost;
-	location / {...}
-}
-
-/var
-chown -R www-data: www				//www-data - default user that nginx uses
-
-
-systemctl start nginx 
-						//service nginx restart
-
-
-
-/etc/systemd/system
-systemctl enable filename.service
-
 
 -------
 
 netstat -an | more
 
--------
+------------------------------------------------------------------------------------------------
 
 dotnet publish -c Release			//-c: config
 app/bin/Release/netcoreapp/fileName.dll	
 app/bin/Release/netcoreapp/publish/fileName.dll	
 
 dotnet fileName.dll
+
+------------------------
+dotnet publish
+./bin/Debug/netcoreapp/publish			//cp -a . /var/www/
+dotnet appName.dll				
+
+
+//nginx
+/etc/systemd/system       //or /lib/systemd/system
+
+//someApp.service
+[Unit]
+Description=...
+
+
+[Service]
+WorkingDirectory=/var/www/webapp
+ExecStart=/usr/bin/dotnet /var/www/webapp/someApp.dll
+Reastart=always
+Environment=foo=bar
+User=web
+
+[Install]
+#WantedBy=multi-user.target
+
+------------------------
+
+
+
+
+
+
 

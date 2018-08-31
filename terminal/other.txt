@@ -20,9 +20,12 @@ find . "*.js" -exec	grep "function"	{} +   		//'{} +' = flag to end exec flag
 find . "*.js" -exec	grep "function"	{} + > outputToFile.txt	
 
 
+
 grep "find some text" ./*									//-i = case insensitive		
 															//-n = show line nr
-
+															//-c = print a count of matching lines
+															//-n = show line number
+															//-e "search"
 cat file | grep search
 
 
@@ -68,9 +71,15 @@ watch free -m
 
 ----------------------------------------------------------------
 //tail, head - print last/first 10 lines
--f, --follow 	//watch, append file changes 		//tail only		//-F
+-f, --follow 	//watch, append file changes 				//tail only		//-F
 -n, --lines		//nr lines to print, or simply -nr
-tail -3 filename
+
+tail -5 filename			//last 5 lines					//or: -n5
+tail +5 filename			//starting from line 5			//or: -n+5
+
+tail file1 file2 etc		
+
+						
 
 
 ----------------------------------------------------------------
@@ -93,12 +102,16 @@ date				//show
 					//+FORMAT		//ex: date +%d-%m-%Y		
 		
 ----------------------------------------------------------------
+//cut
+
+cut filename -d":" -f1				//split by ':' select field 1 	 
+									//-f1,3
+									//-f1-3
+
+									//-c1; -c1,3; etc	//select by char position
+									
+----------------------------------------------------------------
 
 
 
-
-
-
-
-	
 

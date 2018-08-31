@@ -60,7 +60,8 @@ command1 &							//background
 
 //return status 	//0 - ok
 					//non-0 - error
-					
+		
+echo $?				//exit status of the last executed 
 					
 ------------------------------------------------------------------------
 var=test
@@ -70,4 +71,5 @@ echo '$var'		//$var		//text itself
 echo ${var}2	//test2
 
 
-
+//----
+/etc/hostname

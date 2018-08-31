@@ -107,7 +107,7 @@ args = ("$@")					# converts all args as array
 						
 								
 #-----------------------------------							
-#7
+#ProgrammingKnowledge 7
 
 
 #echo {a,b,c}end -> aend bend cend			//brace expansion

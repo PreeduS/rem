@@ -29,19 +29,15 @@ chmod 700 ~/.ssh
 chmod 600 ~/.ssh/*
 
 //set key only auth
-//edit /etc/ssh/sshd_config        //backup first(.bak)
+/etc/ssh/sshd_config        //backup first(.bak)
 #PasswordAuthentication 
+#PermitRootLogin
 
 service ssh restart					//or sshd
 
-
-//------
-/etc/ssh/sshd_config
-#PermitRootLogin
-
 //create new user
-usermod -aG sudo username
-
+usermod -aG sudo username		//add sudo access
+id username
 
 
 sshd_config		#server config
