@@ -1,0 +1,86 @@
+
+
+//.bashrc file			//add comments here to run at new terminal init
+
+/etc/.bashrc				//all users
+~/.bashrc					//user specific
+
+
+/etc/profile				//?
+
+~/bash_profile
+
+/etc/login.defs				//default vars
+
+--------------------
+/etc/passwd
+
+	tom:x:1000:1000:Vivek Gite:/home/vivek:/bin/bash
+	username:x:UID:GID:userInfo:homeDir:shell
+
+x - an x character indicates that encrypted password is stored in /etc/shadow file
+UID - user id
+	- 0       - reserved for root
+	- 1-99 	  - reserved for other predefined accounts
+	- 100-999 - reserved by system for administrative and system accounts/groups
+GID - primary group id (stored in /etc/group file)
+
+userInfo - comment field, it allow you to add extra information about the users 
+homeDir  - home dir absolute path
+shell  	 - shell to be used absolute path. ex: /bin/bash; or command
+
+--------------------
+/etc/shadow
+
+	username:Ep6mckrOLChF.:10063:0:99999:7:::
+	username:passHash:lastPassChange:minPassChange:maxPassChange:warn:inactive:expire:flag
+
+lastPassChange 	- the number of days (since January 1, 1970) since the password was last changed.
+minPassChange 	- the min number of days required between password changes (0 indicates it may be changed at any time)
+maxPassChange 	- the max number of days the password is valid (after that user will be forced to change pass)
+warn 			- the number of days before password expiration, user will be warned that the pass must be changed
+inactive 		- the number of days after password expiration, user account will be disabled
+expire 			- the number of days (since January 1, 1970) that account is disabled, absolute value when the login will no longer be posible
+flag 			- a reserved field for possible future use
+
+passHash:
+$1$ is MD5
+$2a$ is Blowfish
+$2y$ is Blowfish
+$5$ is SHA-256
+$6$ is SHA-512
+
+--------------------
+
+
+________________________________________________________________________________________________
+
+/bin, /usr/bin  - programs
+/dev		- devices
+/etc		- system config
+/home		- user home folders
+/var		- runtime files: ex logs, db files
+
+
+
+________________________________________________________________________________________________
+
+
+
+Monitoring files:
+/var/run/utmp				#keep track current login state of each user
+/var/log/wtmp				#records all login & logout history
+/var/log/btmp				#records failed login attempts
+
+Monitoring commands:
+w							#who is logged
+lastlog						#logs recent logins	from /var/log/lastlog
+lastb						#show failed logins
+who							#show who is logged on
+
+
+
+
+
+
+

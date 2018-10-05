@@ -5,8 +5,8 @@ find . -size +1M											//+1M, -1M 			// +/- : greater/less than
 find . -type f -iname "*.txt"           					//-type				//f = file, d = directory
 find . -type f -not -iname "*.txt"          	
 															//-name 			//search pattern
-															//-iname			// case insensitive -name
-										//-maxdepth 1		//limit recursive search
+															//-iname			//case insensitive -name
+															//-maxdepth 1		//limit recursive search
 																
 															//-path pattern		// "./sr*sc" can match "./src/misc"
 															
@@ -21,11 +21,24 @@ find . "*.js" -exec	grep "function"	{} + > outputToFile.txt
 
 
 
+# find . type f -size -10k -iname "&.txt" exec grep -i -n "function" {} + | tee log.txt									//-10k;k -> kb
+
+
+#find . -type f -exec chmod 775 {} +  			# --> chmod 775 fileA fileB fileC
+#find . -type f -exec chmod 775 {} \;			#chmod 775 fileA
+												#chmod 775 fileB
+												#chmod 775 fileC
+
 grep "find some text" ./*									//-i = case insensitive		
 															//-n = show line nr
 															//-c = print a count of matching lines
 															//-n = show line number
-															//-e "search"
+															//-e "search"		# '^abc..123$'
+																				# '[abc]{5}'
+													
+															//grep ^text$ .# ^ - start; $ - end
+															//grep '\bword\b' . # word boundary
+															
 cat file | grep search
 
 

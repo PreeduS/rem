@@ -22,15 +22,6 @@ apt-get update
 alias ls='ls -l'
 unalias ls
 
-/home/username			//.bashrc file			//add comments here to run at new terminal init
-
-
----
-/bin, /usr/bin  - programs
-/dev		- devices
-/etc		- system config
-/home		- user home folders
-/var		- runtime files: ex logs, db files
 
 
 
@@ -83,11 +74,13 @@ netstat			//netstat -at
 //-tupln
 
 
-------------------------------------------------------------------------------------------------
-
 -------
 
 netstat -an | more
+
+-------
+
+
 
 ------------------------------------------------------------------------------------------------
 
