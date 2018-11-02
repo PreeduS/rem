@@ -1,0 +1,17 @@
+
+
+
+#debian
+#apt
+
+/etc/apt/sources.list
+/etc/apt/sources.list.d		#not debian pkgs	
+
+apt-get install pkg
+apt-cache show pkg			#show pkg info
+
+
+/var/cache/apt/archives		#installed pkgs copy
+	apt-get clean				#clean archives
+
+/usr/share/doc

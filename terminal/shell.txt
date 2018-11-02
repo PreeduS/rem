@@ -100,11 +100,12 @@ $BASH, $HOME, $PWD
 
 #echo $1 $2 $3 					# $0 : currentFile.sh
 
-args = ("$@")					# converts all args as array
+args=("$@")						# converts all args as array
 
 								# $# : args count
 
-						
+#args[@]					#expand/spread		
+echo "args: ${args[@]}"				
 								
 #-----------------------------------							
 #ProgrammingKnowledge 7

@@ -1,0 +1,80 @@
+
+/etc/network/interfaces
+
+auto lo
+iface lo inet loopback
+
+
+auto eth0
+#iface eth0 inet dhcp         
+iface eth0 inet static         
+address 10.1.10.54
+netmask 255.255.255.0
+network 10.1.10.0
+broadcast 10.1.10.255
+gateway 10.1.10.1                    #ex router
+
+
+
+iface eth0 inet static
+address 192.168.1.180
+netmask 255.255.255.0
+broadcast 192.168.1.255
+network 192.168.1.0
+gateway 192.168.1.1
+
+#wireless
+auto wlan0
+iface wlan0 inet dhcp
+wpa-ssid name               #wireless name
+wpa-psk password
+
+-----------------------------------------
+/etc/resolv.conf
+
+/etc/hostname               #/bin/hostname name
+                            #hostname -i            #-i upAddress; -d domainName; -f host + domain name
+/etc/hosts
+
+-----------------------------------------
+
+ip link
+ip addr
+
+dig ip      #dns
+
+
+
+
+
+nslockup google.com
+traceroute google.com
+
+
+
+
+-----------------------------------------
+			
+ifconfig			
+ifconfig <interface>				//ifconfig eth0
+ifconfig <interface> up				//ifconfig <interface> down		//enable/disable connection
+//HWaddr - hardware address/MAC
+//inet addr - internet address
+//RX,TX - received, transmitted packets
+
+ifconfig -a             #all
+ifup eth0               #ifconfig eth0 up
+ifdown eth0             #ifconfig eth0 down
+
+iwconfig                #wireless specific
+
+netstat			//netstat -at
+//-a,--all; -l,--listening; -t,--tcp; -u,--udp
+//-tupln
+
+ping -c 4 google.com
+-------
+
+netstat -an | more
+
+-------

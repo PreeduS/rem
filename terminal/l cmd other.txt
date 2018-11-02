@@ -60,25 +60,7 @@ renice -n 17 -p 1134				//change priority of running processes
 									//-p, --pid
 			
 jobs
-			
-ifconfig			
-ifconfig <interface>				//ifconfig eth0
-ifconfig <interface> up				//ifconfig <interface> down		//enable/disable connection
-//HWaddr - hardware address/MAC
-//inet addr - internet address
-//RX,TX - received, transmitted packets
 
-
-netstat			//netstat -at
-//-a,--all; -l,--listening; -t,--tcp; -u,--udp
-//-tupln
-
-
--------
-
-netstat -an | more
-
--------
 
 
 
