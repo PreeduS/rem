@@ -1,0 +1,103 @@
+
+//nginx
+
+install nginx			//apt-get install nginx	
+cd /etc/nginx/
+
+//nginx.conf			//main config file
+...
+include /etc/nginx/conf.d/*.conf;
+include /etc/nginx/sites-enabled/*;
+
+//create fileName.conf in conf.d
+ex config: 
+server{
+	listen 80;											#or ip[:port]
+	server_name localhost;								#url
+	root /var/www;										#public static files
+	index index.html;
+	proxy_set_header Host $http_host;					#forward the nginx host header to the localhost app
+	proxy_set_header X-Real-IP $remote-addr;			#client ip
+	proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+	
+	#location / {
+	location /api/ {
+		proxy_pass "http://localhost:5000/api/";
+		...
+	}
+	location /public/ {
+		root /data/www;
+	}
+}
+
+/var
+chown -R www-data: www				//www-data - default user that nginx uses
+
+
+nginx -t							//test config syntax
+systemctl start nginx 
+
+
+
+/etc/systemd/system
+systemctl enable filename.service
+
+
+
+
+------------------------------------------------------------------------------------------------
+//systemd 
+
+systemctl list-units
+systemctl status ssh.service
+systemctl start someService.service
+systemctl stop ssh.service	
+systemctl enable ssh.service								//automatically start on restart
+systemctl disable ssh.service								//do not start on restart						
+systemctl restart ssh.service								//kill the process and start it again
+systemctl --failed											//list units failed to start
+systemctl is-enabled ssh.service								
+
+systemctl list-unit-files --type service					//service,target
+
+systemctl daemon-reload										//reload all config files
+
+//somefile.sh			//chmod +x
+#!/bin/bash
+while true
+do
+	echo "test $(date)"; sleep 5;
+done
+
+/etc/systemd/system
+//somefile.service
+[Unit]
+Description=...
+After=network.target 
+
+[Service]
+ExecStart=path/somefile.sh
+Reastart=always
+Environment=foo=bar
+
+
+//log by default to: /var/log/syslog
+journalctl -u somefile							//logs
+
+
+
+//man systemd.service
+
+
+
+
+
+
+
+
+
+
+
+
+
+

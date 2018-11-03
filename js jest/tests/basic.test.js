@@ -1,5 +1,16 @@
 //import * as basic from '../functions/basic';
+import React from 'react';
+import {shallow} from 'enzyme';
+import Button from '../functions/Button'
+
+//temp
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+Enzyme.configure({ adapter: new Adapter() });
+
+
 const basic = require('../functions/basic');
+
 
 
 test("First test", () => {
@@ -43,10 +54,33 @@ describe("Describe test", () => {
 
 });
 
+describe("React test", () => {
+
+    test("Should have 1 button", () => {
+        let ButtonEl = shallow(<Button />);
+        expect( ButtonEl.find('button').length ).toBe(1);
+    });
+    test("Should have a click handler prop", () => {
+        let mockClickHandler = jest.fn();
+        let ButtonEl = shallow(<Button onClick = {mockClickHandler}/>);
+        ButtonEl.find('button').simulate('click');
+        
+        expect(mockClickHandler.mock.calls.length).toBe(1);
+
+    });
+
+    test("Should increment value", () => {
+        let mockClickHandler = jest.fn();
+        let ButtonEl = shallow(<Button onClick = {mockClickHandler} mode = "inc"/>);
+        ButtonEl.find('button').simulate('click');
+
+        expect(ButtonEl.instance().state.counter).toBe(1);
+        expect(ButtonEl.instance().props.mode).toBe('inc');
+    });
 
 
 
-
+});
 
 
 

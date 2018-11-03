@@ -1,0 +1,139 @@
+//check later
+
+pbcopy
+pm2
+include
+killall serviceName
+
+pgrep
+
+--- xargs ---
+seq 5 | xargs -n 1 echo "test"
+
+
+
+printf '1\n2\n3\n' | xargs echo "test"				#test 1 2 3
+printf '1\n2\n3\n' | xargs -n1 echo "test"			#test 1
+													#test 2
+													#test 3
+													
+printf '1\n2\n3\n' | xargs -n1 -i echo "test_{}_"		#test_1_  #etc
+														
+														#-i, --replace	# deprecated, use -I
+														#{} implied
+		
+echo "1,2,3" | xargs -n1 -d"," echo test						
+														#-d, --delimiter
+														
+echo "1,2,3" | xargs -I{} -d"," echo test_{}														
+														
+------
+
+//osdata
+//Jason Wertz
+
+----
+//softlink - if moved the link is lost
+		//each has its own inode
+
+ln -s test/someFile softLinkFile
+
+ln -fs newPath softLinkFile		//f - unlink
+
+
+//hardlink - same inode			//different name, same file on memory
+ln test/someFile hardLinkFile
+
+
+
+
+------------------------------------------------------------------------------------------------
+
+command &  	//& after - background process
+sleep 10 &
+
+jobs				//list background, suspended tasks
+
+fg [jobID]			//back, move to foreground, id defaults as last jobs id 
+bg [jobID]			//move to background, ex: tasks suspended with ctrl+z
+					//or %jobID
+					
+					//ctrl+z	//suspend/pause running task
+								//resume by moving back to background
+kill %jobID			
+	
+	
+	
+sh -c		//child shell
+
+(echo test)					//subshell
+{ echo 1; echo 2; } | cat	//current shell, spacing required
+
+
+
+------------
+.bashrc				//non interactive shell, new terminal;	ex: su, bash
+
+.bash_profile		//interactive shell, needs relogin;		ex: ssh; su -l
+					// /home/username/.bash_profile
+
+$(echo "test")		//subshell
+
+					//ctrl+d - exit
+					
+					
+sleep 5 &
+------------
+------------------------------------------------------------------------------------------------
+hostname
+uname -n
+
+/etc/hostname
+/etc/hosts
+
+more /etc/sysconfig/network-scripts/ifcfg-*
+
+/etc/resolv.cond
+
+
+
+------------
+
+
+
+export someVar						//make vars available in child processes
+set
+unset
+env									// /usr/bin/env
+									//display exported vars
+
+				
+				
+/etc/environment					//global env vars
+									//.bashrc, .bash_profile - user level vars
+									
+$PATH 								// /etc/profile or /etc/profile.d/
+
+PATH=$PATH:/some/path				// /some/path:$PATH
+
+
+
+
+source			//source /etc/environment && export PATH
+
+
+chage
+
+//user private group
+
+------------------------------------------------------------------------------------------------------
+Rems:
+
+/etc/passwd
+/etc/shadow								//! - login disabled, * - no pass set
+/etc/group
+/etc/skel/
+
+/etc/sudoers
+
+

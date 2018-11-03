@@ -26,12 +26,14 @@ useradd -m -d /home/username -s /bin/bash/ -g users	username
 																	//-u, --uid 1501			//unique user id
 																	//-m, --create-home		 	//create home dir, files in skeleton directory will be copied(defined with -k)
 																	//-d, --home HOME_DIR		//define path																
-																	//-g groupName				//-g users
+																	//-g primaryGroupName				//-g users
+																	//-G secondaryGroupName
 																	//-s, --shell				//default: SHELL var in /etc/default/useradd
 																	//-k, --skel SKEL_DIR		//default: SKEL  var in /etc/default/useradd
 																								//default: /etc/skel/	
 																								//valid with -m
-																	//-c, --comment				//-c "comment"
+																	//-c, --comment
+
 																	
 passwd																//change pass, on current user											
 passwd username
@@ -43,12 +45,18 @@ userdel username					//-r, --remove 					//remove user home directory also
 
 su userName							//switch user; su - username
 su -								//switch to root, -l or - : set the environment to match the changed user
-									
-									
+																//ex check env: echo $USER
+	
 groups								//list groups
 									// /etc/group
+									
 groupadd groupName
+									//-r, --system 					//create a system group(100-999 GID), no extra privileges, just for convention
+									//-g, --gid GID
+
 groupdel groupName
+									
+//gpasswd - administer /etc/group and /etc/gshadow
 gpasswd -a userName groupName		//add user to group				//-a, --add
 gpasswd -d userName groupName		//del user from group			//-d, --delete
 									//gpasswd -a userA,userB groupName
@@ -60,7 +68,14 @@ usermod -G groupName1,groupName2 username 		//will replace other groups
 usermod -L username								//-L, --lock
 												//-U, --unlock
 												//-d, --home HOME_DIR
+												 
+												//-s /shell/path
+												//-d /home/dir		// -m : move content to new directory, create dir if not exist
 
+groupmod -g newGID -n newName gorupName								//modify group
+																	//rem - check if files that use the group update their gid ref		
+												
+												
 //adduser username
 id username
 
