@@ -31,7 +31,7 @@ useradd -m -d /home/username -s /bin/bash/ -g users	username
 																	//-k, --skel SKEL_DIR		//default: SKEL  var in /etc/default/useradd
 																								//default: /etc/skel/	
 																								//valid with -m
-																	//-c, --comment
+																	//-c, --comment				//-c "comment"
 																	
 passwd																//change pass, on current user											
 passwd username
@@ -41,9 +41,10 @@ passwd username
 userdel username					//-r, --remove 					//remove user home directory also
 									//-f, --force					//remove if the user is still logged in, or home dir is shared with other user
 
-su userName							//switch user
+su userName							//switch user; su - username
 su -								//switch to root, -l or - : set the environment to match the changed user
-	
+									
+									
 groups								//list groups
 									// /etc/group
 groupadd groupName
@@ -63,7 +64,11 @@ usermod -L username								//-L, --lock
 //adduser username
 id username
 
+
 /etc/passwd
 /etc/shadow								//! - login disabled, * - no pass set
 /etc/group
 /etc/skel/
+
+/etc/sudoers							//sudo group permissions defined here
+

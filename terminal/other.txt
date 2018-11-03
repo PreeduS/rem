@@ -83,6 +83,12 @@ less filename
 :?searcHValue			//prev
 						//:n 			//next/prev
 										
+----------------------------------------------------------------
+//cut
+cut -d: -f1 /etc/passwd					//split by ':' select field 1 	 
+										//-f1,3 	 //-f1-3
+
+
 ----------------------------------------------------------------		
 //calendar, date
 cal, ncal 			//cal year, cal month year

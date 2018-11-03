@@ -28,11 +28,17 @@ wc filename					//word count - returns nr lines, nr words, nr chars
 
 							
 | sort
-| cut -d":" -f1				//split by ':' select field 1 	 //-f1,3
 
 
 
-					
+lsof 
+lsof -p 1234
+lsof -u username
+lsof -i :80				//listen to port
+
+
+	
+			
 ------------------------------------------------------------------------------------------------
 
 
@@ -44,6 +50,8 @@ apt-get update
 ------------------------------------------------------------------------------------------------
 alias ls='ls -l'
 unalias ls
+
+alias		//list
 
 /home/username			//.bashrc file			//add comments here to run at new terminal init
 
@@ -61,7 +69,10 @@ ls filename && echo "done"
 ----
 curl "link"
 --------------
+which sudo			//locate a command
+					//$PATH					// /etc/environment
 
+					
 ------------------------------------------------------------------------------------------------
 //check:
 command &  	//& after - background process

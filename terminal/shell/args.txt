@@ -1,0 +1,25 @@
+#!/bin/bash
+
+#arguments
+argCount=$#
+p0=$0
+echo "argCount: ${argCount}"
+echo "p0: $p0"
+
+
+args=("$@")		# converts all args as array
+
+echo "args[0]: ${args[0]}"
+echo "args[1]: ${args[1]}"
+
+
+
+# ./currentFile.sh var1 var2 var3
+
+echo $1 $2 ${3} 			
+
+# $0 : currentFile.sh
+# args=("$@") : converts all args as array
+# $# : args count
+
+
