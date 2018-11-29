@@ -36,6 +36,8 @@ wpa-psk password
                             #hostname -i            #-i upAddress; -d domainName; -f host + domain name
 /etc/hosts
 
+/etc/services               #port standards
+/etc/protocols
 -----------------------------------------
 
 ip link
@@ -68,13 +70,21 @@ ifdown eth0             #ifconfig eth0 down
 
 iwconfig                #wireless specific
 
-netstat			//netstat -at
+-------
+netstat			        #netstat -at
 //-a,--all; -l,--listening; -t,--tcp; -u,--udp
 //-tupln
+//-s                    #list statistics
+ #-n --numeric
+-------
+ethtool eth0
+ethtool -S eth0         #list statistics
+
+
 
 ping -c 4 google.com
 -------
 
-netstat -an | more
+netstat -an | more          #-a --all; -n --numeric
 
--------
+arp         #show arp mappings
