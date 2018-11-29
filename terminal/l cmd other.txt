@@ -15,15 +15,6 @@ lsof -u username
 lsof -i :80				//listen to port
 
 
-	
-			
-------------------------------------------------------------------------------------------------
-
-
-apt-get install name name2 etc
-apt-get remove name 
-apt-cache search name
-apt-get update
 
 ------------------------------------------------------------------------------------------------
 alias ls='ls -l'
@@ -42,14 +33,21 @@ which sudo			//locate a command
 					//$PATH					// /etc/environment
 
 					
+
+----
+#sed
+
+echo test | sed "s/test/test-replace/"
+echo test | sed "s/Test/test-replace/i"
+echo test | sed "s/t/[t]/gi"
+echo test test | sed "s/[ \t]/_/"				#replace space or tab
+
+echo test | sed "s|test|test-replace|"			#different divider
+
+sed -i "s|test|test-replace|" path
+
 ------------------------------------------------------------------------------------------------
 
-
-w
-who
-whoami
-id
-df						//list disk space
 
 //processes
 

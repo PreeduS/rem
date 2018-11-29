@@ -79,8 +79,9 @@ lastb						#show failed logins
 who							#show who is logged on
 
 
-
-
+whoami
+id
+df						//list disk space
 
 
 

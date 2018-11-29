@@ -87,3 +87,49 @@ id username
 
 /etc/sudoers							//sudo group permissions defined here
 
+
+
+
+
+
+------------------------------------------------------------------------------------------------
+#default assigned permissions without umask
+#files: rw-rw-rw-			#666
+#dirs:	rwxrwxrwx			#777
+				
+umask			#show
+umask 0022		#set				#what permissions to substract from defaults
+									#user,group,other
+
+#set by default on reboot in 
+#/etc/profile #or
+#/etc/login.defs
+
+------
+
+#sticky bit							#on dir, users can only remove files that they own
+#chmod +t path
+
+#SUID								#run command as the owner user			#ex passwd
+#chmod u+s
+#chmod 4777
+#rws
+
+#SGID								
+#chmod 2777
+
+
+#find . -perm +4000					#search for SUID set files
+
+
+------
+#if you have write access to the directory, you can remove the files in it, regardless of the files' owners.
+#no write/edit access on file
+#sticky bit use case
+
+#-w on file != delete permission
+#-w on dir == delete contents permission
+
+
+
+

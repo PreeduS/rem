@@ -15,3 +15,19 @@ apt-cache show pkg			#show pkg info
 	apt-get clean				#clean archives
 
 /usr/share/doc
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------
+
+#ex
+apt-get install name name2 etc
+apt-get remove name 
+apt-cache search name
+apt-get update
