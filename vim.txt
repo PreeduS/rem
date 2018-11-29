@@ -3,7 +3,7 @@ i
 :x (:wq) 		//save+quit  
 :w 			//save/write 
 :q 			//quit
-
+:q!         //quit without save
 
 :set number
 :set tabstop=2
