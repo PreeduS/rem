@@ -3,7 +3,8 @@ const graphql = require('graphql')
 const {
     GraphQLObjectType, GraphQLList, 
     GraphQLString, GraphQLInt, GraphQLID, 
-    GraphQLSchema
+    GraphQLSchema,
+    GraphQLNonNull
 } = graphql;
 
 let booksMockup = [
@@ -93,20 +94,26 @@ const Mutation = new GraphQLObjectType({
     name: 'Mutation',
     fields: {
         addAuthor: {
-            type: AuthorType,
-            args: {
-                name: {type: GraphQLString},
+            //type: AuthorType,
+            type: new GraphQLList(AuthorType),
+            args: {                                 //at least one arg is required by default
+                name: {type: new GraphQLNonNull(GraphQLString)},
                 age: {type: GraphQLInt},
             },
             resolve(parent, args){
                 //add to db
-                //authorsMockup.push...
+                authorsMockup.push(
+                    {name: args.name, age: args.age, id: authorsMockup.length + 1},
+                );
+
+                //return  {name: args.name, age: args.age, id: authorsMockup.length + 1};
+                return authorsMockup;
             }
         }
     }
 });
 
-
 module.exports = new GraphQLSchema({
-    query: RootQuery
+    query: RootQuery,
+    mutation: Mutation
 });
