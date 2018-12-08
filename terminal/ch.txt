@@ -49,18 +49,8 @@ ln test/someFile hardLinkFile
 
 ------------------------------------------------------------------------------------------------
 
-command &  	//& after - background process
-sleep 10 &
 
-jobs				//list background, suspended tasks
-
-fg [jobID]			//back, move to foreground, id defaults as last jobs id 
-bg [jobID]			//move to background, ex: tasks suspended with ctrl+z
-					//or %jobID
-					
-					//ctrl+z	//suspend/pause running task
-								//resume by moving back to background
-kill %jobID			
+		
 	
 	
 	
@@ -88,13 +78,9 @@ sleep 5 &
 hostname
 uname -n
 
-/etc/hostname
-/etc/hosts
+
 
 more /etc/sysconfig/network-scripts/ifcfg-*
-
-/etc/resolv.cond
-
 
 
 ------------

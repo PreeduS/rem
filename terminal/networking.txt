@@ -1,5 +1,6 @@
 
-/etc/network/interfaces
+/etc/network/interfaces				#static ip config here
+
 
 auto lo
 iface lo inet loopback
@@ -40,18 +41,33 @@ wpa-psk password
 /etc/protocols
 -----------------------------------------
 
-ip link
-ip addr
+ip link         #show interfaces
+ip addr         #ip a/addr/address
+ip link show iface
+ip -d link show iface       #-d, -details
+ip link help
+ip link set lo down         #up, down
 
+#ip [option] tabKey     #show options
+                  
+                        #-a,-all #execute command over all objects(link, address, etc)
+ip a show iface
+ip -s a show iface      #-s, -stats, -statistics
+                        
+ip route                #show table routes
+ip route get ipAddr
+       
+
+ip link add test0 type testType
+       
+--------------                
+                        
 dig ip      #dns
-
-
 
 
 
 nslockup google.com
 traceroute google.com
-
 
 
 
@@ -65,26 +81,63 @@ ifconfig <interface> up				//ifconfig <interface> down		//enable/disable connect
 //RX,TX - received, transmitted packets
 
 ifconfig -a             #all
+ifconfig eth0 ipAddr	#change ip addr		#not recommended
 ifup eth0               #ifconfig eth0 up
 ifdown eth0             #ifconfig eth0 down
 
 iwconfig                #wireless specific
 
--------
+
+--------------
 netstat			        #netstat -at
 //-a,--all; -l,--listening; -t,--tcp; -u,--udp
+//-p, --program         #show PID
 //-tupln
 //-s                    #list statistics
- #-n --numeric
--------
+//-n --numeric
+//-r, --route           
+//-i                    #list interfaces
+
+netstat -rn             #routing table
+#same:
+#-t,u,p,l,n,a
+#-p,--process           
+
+----
+ss -tupln   #similar to netstat, shows more detail
+
+--------------
+lsof                            #list open files
+lsof -i -P -n | grep LISTEN
+
+-i                              #listing of files any of whose Internet address matches the address specified in i
+                                #select all if not specified
+-P                              #show ports
+
+-n                              #show ip
+
+--------------
 ethtool eth0
 ethtool -S eth0         #list statistics
 
 
 
 ping -c 4 google.com
--------
-
-netstat -an | more          #-a --all; -n --numeric
+--------------
 
 arp         #show arp mappings
+arp -a
+
+
+
+
+
+--------------
+#routing table
+
+route          
+route -n
+netstat -rn    
+       
+arp
+ip route 

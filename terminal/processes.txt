@@ -1,0 +1,71 @@
+ps
+ps -f           #-f         #full format
+                #-F         #extra full format
+                #-e, -A     #select all processes
+                #-l         #long format
+                
+ps ax           #a - list all terminals processes
+                #x - list all processes owned by current user
+     
+
+ps						#display processes
+						#ps aux | grep nginx
+     
+#PPID = parent pid
+
+top						#display processes
+htop					#interactive process viewer
+top                     #key:
+                        #h - help
+                        #k - kill
+
+                        
+                                             
+                        
+jobs                    
+kill %jobID	            
+kill <processId> 		#default close signal
+kill -9 <processId> 	#force close
+						#-l: list signals
+						#15 SIGTERM default/implied
+                        
+                        #1-SIGHUP	#kill and restart?
+						
+killall	-9 <processName>	    #kill process and children(PPID as parent PID)		
+  
+  
+-----------                     
+nice -n 10 ./someFile.sh &		//run a program with modified scheduling priority					
+								//-n 	//range from -20 (most favorable scheduling) to 19 (least favorable).
+								//default 10
+
+
+renice -n 17 -p 1134				//change priority of running processes
+									//-p, --pid        
+         
+         
+-----------            
+pstree
+
+#
+/proc/
+
+
+
+
+
+
+
+
+-----------
+command &  	//& after - background process
+sleep 10 &
+
+jobs				//list background, suspended tasks
+
+fg [jobID]			//back, move to foreground, id defaults as last jobs id 
+bg [jobID]			//move to background, ex: tasks suspended with ctrl+z
+					//or %jobID
+					
+					//ctrl+z	//suspend/pause running task
+								//resume by moving back to background  
