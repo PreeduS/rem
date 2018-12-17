@@ -1,0 +1,73 @@
+<html>
+    <head>
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.dev.js"></script>
+    </head>
+    <body>
+        <div id = "feedback"></div><br />
+        <div id = "output"></div>
+        <div>
+            <input id = "uname" placeholder = "Name" style = "width:50px"/>
+            <input id = "input" />
+            <input id = "submit" type = "button" value = "Send" />
+        </div>
+    <script>
+
+        var socket = io.connect('http://localhost:2001');
+
+        var input = document.getElementById('input');
+        var output = document.getElementById('output');
+        var uname = document.getElementById('uname');
+        var feedback = document.getElementById('feedback');
+        var submit = document.getElementById('submit');
+        
+        submit.addEventListener('click', () => {
+            socket.emit('chat', {name: uname.value, message: input.value})
+            socket.emit('doneTyping', {name: uname.value})
+            input.value = '';
+        });
+
+        input.addEventListener('keyup', e => {
+            let value = e.target.value;
+
+            if(value === ''){
+                socket.emit('doneTyping',{name: uname.value})
+            }else{
+                socket.emit('typing',{name: uname.value})
+            }
+        });
+        var usersTyping = [];
+        const getUsersTyping = usersTyping =>{
+            if(usersTyping.length === 0){return '';}
+            let result = usersTyping.reduce( (acc, val) =>{ 
+                let delim = acc !== '' ? ', ': ''; 
+                return (acc + delim + val)
+            }, '');     
+            
+            let delim = usersTyping.length === 1 ? 'is':'are';
+
+            return `${result} ${delim} typing`;
+        }
+        //listen for events
+        socket.on('chat', data => {
+            let div = document.createElement("div");
+            var node = document.createTextNode(data.name+ ' : ' + data.message);
+            div.appendChild(node);
+
+            output.appendChild(div);
+        });
+
+        socket.on('typing', data => {
+            if(usersTyping.indexOf(data.name) === -1 ){ usersTyping.push(data.name); }        
+            feedback.textContent = getUsersTyping(usersTyping);
+        });
+        
+        socket.on('doneTyping', data => {
+            let pos = usersTyping.indexOf(data.name);
+            if(pos !== -1 ){ usersTyping.splice(pos,1); }
+
+            feedback.textContent = getUsersTyping(usersTyping);
+        });
+
+    </script>
+    </body>
+</html>

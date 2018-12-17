@@ -1,0 +1,13 @@
+saga
+graphql
+flow
+hooks
+formik
+jest
+gatsby
+
+node sockets, processes
+
+---
+
+curl
