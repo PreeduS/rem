@@ -1,0 +1,10 @@
+
+curl urlPath
+curl -i urlPath				//-i include header info
+
+curl -o file urlPath		//save output to file
+							
+							
+curl --data "var1=...&var2=..." urlPath			
+curl -X PUT -d "var1=..." urlPath			
+curl -X DELETE urlPath			
