@@ -68,4 +68,4 @@ bg [jobID]			//move to background, ex: tasks suspended with ctrl+z
 					//or %jobID
 					
 					//ctrl+z	//suspend/pause running task
-								//resume by moving back to background  
+								//resume by moving back to foreground  

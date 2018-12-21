@@ -1,0 +1,51 @@
+
+ufw status
+ufw enable
+ufw deny ssh			#ufw deny 22		#deny -> DROP iptables -> no info given -> timeout caused
+ufw allow ssh
+
+#ufw reject 8080							#reject -> REJECT iptables -> sends error info
+#ufw deny OUT 22
+#ufw deny from ipAddr to any
+#ufw deny OUT from any to ipAddr 
+
+#ufw allow OUT from any port portNr to ipAddr 
+
+#ufw delete lineNumber
+
+ufw status numbered
+ufw status verbose
+
+/var/log/ufw.log
+
+----------------------------
+
+
+lsof -i				#list running processes
+netstat -tulpn
+
+iptables -L			#list
+
+iptables -A UNPUT -s ipAddr -j DROP						#-A append, -s source
+iptables -A UNPUT -s 192.168.0.0/24 -p tcp --destination-port 25 -j DROP	
+iptables -A INPUT -s ipAddr -j ACCEPT
+
+
+iptables -D INPUT 3			#delete rule, index starts at 1
+							#rules are read from top to bottom
+							
+iptables -A INPUT -i lo -j ACCEPT							
+							#-i lo 	//-i interface
+							
+							#-I INPUT 		//insert
+							#-p tcp
+							#-d	$SOME_IP	//destination
+							#--dport 21
+							
+							#-s 0/0			//all sources ?
+							
+							
+#defaults
+iptables --policy INPUT DROP			
+iptables --policy OUTPUT DROP					
+iptables --policy FORWARD DROP	
