@@ -18,7 +18,9 @@ const store = createStore(
 
 );
 sagaMiddleware.run(rootSaga)
-store.dispatch({type: 'ACTION_PLACEHOLDER'}); 
+store.dispatch({type: 'ACTION_ROOT_1'}); 
+store.dispatch({type: 'ACTION_ROOT_1'}); 
+
 
 
 export default store;
