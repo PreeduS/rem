@@ -1,0 +1,83 @@
+#check: primary vs extended partition
+
+#udev	#device manager
+#LVN	
+#mkfs vs mke2fs
+#dumpe2fs			#superblocks, inodes
+#e2label
+
+#https://www.youtube.com/watch?v=JBRFEvsvQPQ
+#https://www.youtube.com/watch?v=4PBqpX0_UOc		#35:00
+
+lsblk						#list block devices
+dd							#copy a file, converting and formatting according to the operands.	
+fdisk						#fdisk /dev/sdb
+fdisk						#creates MBR partition table
+gdisk						#creates GPT(GUID partition table)
+
+#check fdisk vs parted
+
+lspci
+lsusb
+
+
+#ext4 vs xfs
+
+----
+
+ls /dev/sd?
+
+mkfs.ext4 /dev/sdb1				#make filesystem
+
+mkswap /dev/sdb2				#make swap partition
+swapon /dev/sdb2		
+
+mount /dev/sdb3 /mnt		
+ls /mnt
+mkdir /mnt/boot
+
+mount /dev/sdb1 /mnt/boot
+
+pacstrap /mnt base base-devel vim			#install
+
+cat /etc/fstab			#fs tab file
+genfstab /mnt
+
+
+------------
+#partitions
+
+fdisk - Partition table manipulator for Linux
+
+fdisk -l /dev/sdb									#list the partition tables for the specified devices 
+
+fdisk /dev/path				#create partition
+#m - man, commands menu
+#n - create new partition
+		#size ex: +50M 			#50 megabytes
+#p - print the updated partition table
+#w - write/save
+#q - quit
+
+#inform system of the newly created partition
+partprobe /dev/path
+
+
+------
+#filesystems
+mkfs - build a Linux file system
+
+mkfs -t ext4 /dev/path
+#-t #fs type 
+
+
+------
+
+#mount the created filesystem on the partition
+mount /dev/path /someDir
+
+#/etc/fstab					#make mount persistent
+
+
+
+	

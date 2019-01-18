@@ -1,0 +1,40 @@
+
+#rsync -aAXv --delete --dry-run --exclude=/dev/* --exclude=/proc/* /source /destination
+rsync -aAXv --delete --dry-run --exclude=/dev/* --exclude=/proc/* / /run/media/name/name			
+
+#/run/media/name/name - USB
+
+#excludes
+/sys/*
+/tmp/*
+/run/*
+/mnt/*
+/media/*
+"swapfile"
+"lost+found"
+"Downloads"
+
+etc
+
+
+-a, --archive
+-A, --acls 			#preserve ACLs(access control lists)
+-X, --xattrs		#perserve extended attributes
+-v, --verbose
+
+--delete 			#
+
+
+
+
+#Clonezila  
+
+#dd				#unmount before
+
+dd if=/dev/sda of=/dev/sdb
+dd if=/dev/sda1 of=/dev/sdb1					
+
+
+dd if=/dev/sda2 of=~/partition.img bs=4096  conv=notrunc,noerror
+
+mount ~/partition.img /mnt -o ro,loop

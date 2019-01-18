@@ -1,0 +1,113 @@
+
+tty
+
+/dev/pts
+
+echo "test" > /dev/pts/1	#get returned to the terminal
+
+
+---------------
+#partitions
+
+ls -l /dev | grep sd
+
+#check uuid, #devices sda,sdb,sdc etc, don't maintain order when plugged in/out
+
+primary, extended partition,		#extended - primary - same size
+mbr label, mbr partition table		
+mbr partition table 				#max 2.2 TB	
+									#max 4 primary partitions
+
+GPT partition table					#GUID Partition Table
+									#UEFI boot required
+-legacy MBR header
+-up to 128 partitions
+
+
+---------------
+#partitions
+
+
+---------------
+#filesystems
+
+mke2fs -t ext4 -n /dev/sdc1
+
+mkfs.ext4
+
+---------------
+#mount
+
+mount -t ext4 /dev/sdc1 /testDir			#mount -t type /path/device /path/dir
+mount -l -t ext4							#list all ext4 mounts
+
+umount /testDir
+
+#unmounting & mounting keeps the data on the device
+#on mount - replaces the data on the target dir mountpoint
+#on unmount - returns the data
+
+
+
+
+#mount -t ext4 -o discard /dev/sdc1 /testDir		#check
+
+
+
+#/etc/fstab									#mount automatically on boot
+
+#ex:
+#/dev/sdc1	/testmount	ext4	ro,discard	0 0
+
+
+#get devices uuid
+blkid				
+lsblk --fs
+
+#in fstab, replace device path(ex: /dev/sdc1) with its UUID(UUID=...)
+#to ensure that devices maintain order after plugged in/out
+
+
+#mount -a			#mount all devices on /etc/fstab
+
+
+
+---------------
+df -h				#disk free
+du
+
+---------------
+#LVM
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------
+
+
+
+
+#partition
+/boot		#first			#ext2?
+/			#next
+
+swap		#second last	#memory size + ~100MB
+							#minimum of 4gb
+/home		#last							
+
+---------------
+
+Boot sector
+Master Boot Record (MBR)		512 bytes
+
+Primary boot loader 			446 bytes(Bootstrap code area)
+Partition table					64 bytes(4 primary partition x16)
+Boot signature					2 bytes		# hex: 55 AA
