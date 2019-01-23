@@ -8,6 +8,7 @@ gatsby
 
 node sockets, processes
 
+git raw
 ---
 
 curl
@@ -18,3 +19,10 @@ curl
 webpack:
 source-map-loader
 optimize-css-assets-webpack-plugin 
+
+
+
+
+https://www.techhive.com/article/213612/all_about_video_codecs_and_containers.html
+https://www.bau.edu.jo/UserPortal/UserProfile/PostsAttach/10617_1870_1.pdf#page=344&zoom=100,0,260
+https://www.geeksforgeeks.org/computer-network-tutorials/
