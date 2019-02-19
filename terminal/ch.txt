@@ -90,12 +90,13 @@ more /etc/sysconfig/network-scripts/ifcfg-*
 ------------
 
 
-
-export someVar						//make vars available in child processes
+$someVar=...
+export someVar						#make vars available in child processes
+									#as a copy, not ref
 set
 unset
-env									// /usr/bin/env
-									//display exported vars
+env									#/usr/bin/env
+									#display exported vars
 
 				
 				

@@ -80,15 +80,27 @@ du
 #LVM
 
 
+#physical volume
+pvcreate /dev/sdb1								#add lvm label(by default - written second sector of the device or partition)
+												#marked as claimed by lvm
+												#label - contains uuid, size info and pointer to the lvm metadata
+
+												#metadata - added by default after the label
+pvcreate --metadatacopies 2 -v /dev/sdc1		#create 2 copies of the metadata - one after the lvm header, second at the end of the partition
 
 
+pvdisplay /dev/sdb1
+pvremove /dev/sdb1
 
+pvs
+-----
+#volume groups
+vgcreate vg_name /dev/sdb1
 
+vgdisplay vg_name
+vgs
 
-
-
-
-
+#lvcreate ...
 
 ------------------------------------------------------------------------------------------
 
@@ -111,3 +123,22 @@ Master Boot Record (MBR)		512 bytes
 Primary boot loader 			446 bytes(Bootstrap code area)
 Partition table					64 bytes(4 primary partition x16)
 Boot signature					2 bytes		# hex: 55 AA
+
+
+
+
+
+
+
+
+
+
+--------------
+
+https://www.youtube.com/watch?v=1QsunXeUwP8&index=6&list=PLkp40uss1kSKKDtU5LjCEXXtEb0V6IHDr
+https://www.youtube.com/playlist?list=PLkp40uss1kSKKDtU5LjCEXXtEb0V6IHDr
+https://www.youtube.com/playlist?list=PLpKIAFYBxQOWzJjInMUaKtamCshDmLjej
+https://www.youtube.com/watch?v=JV0JEM_HPLU&index=2&list=PLl9FKlo0R0vFDzK8Ng3f9oqOQk-gaxPEe
+
+rsyslog
+inotify 

@@ -81,3 +81,67 @@ mount /dev/path /someDir
 
 
 	
+
+
+
+--------------------------------------------------------------------------
+#arch install					#bios, mbr install
+#31:30
+
+#download arch iso
+lsblk
+dd if=Downloads/archlinux-details.iso of=/dev/sdb status="progress"				#sdb - usb stick
+
+#ls /sys/firmware/efi/efivars
+timedatectl set-ntp true
+
+-----
+fdisk /dev/sdb						#sdb - mount to disk
+#p - print						
+#delete partitions if exists		#d
+#create new partition (boot)		#n
+#first: primary, partition nr 1 (default), first sector (2048 default), last sector (+200M)
+#remove signature(yes)				
+
+#create new partition (swap)
+#primary, partition nr 2 (default), first sector (default), last sector (+8G)
+
+#create new partition (root)
+#primary, partition nr 3 (default), first sector (default), last sector (+30G)
+
+#create new partition (home)
+#primary, partition nr 4 (default), first sector (default), last sector (default/empty)		#fills the rest of the space
+
+#w - write
+
+-----
+lsblk
+#add filesystem to boot, root, home
+mkfs.ext4 /dev/sdb1
+mkfs.ext4 /dev/sdb3
+mkfs.ext4 /dev/sdb4
+
+mkswap /dev/sdb2
+swapon /dev/sdb2
+
+-----
+#mount
+mount /dev/sdb3 /mnt
+mkdir /mnt/boot
+mkdir /mnt/home
+mount /dev/sdb1 /mnt/boot
+mount /dev/sdb4 /mnt/home
+
+-----
+pacstrap /mnt base base-devel vim
+
+--------------------------------------------------------------------------
+#dd							#deep copy, block devices
+
+dd if=inputPath of=outputPath bs=1M count=1024
+						#1GB of size(1024 blocks of 1MB)
+
+bs=BYTES				#read and write up to BYTES bytes at a time
+count=N					#copy only N input blocks
+skip=N					#control how far to read into to input(blocks) before beginning to move bytes
+seek=N					#same as skip, but skips on output
