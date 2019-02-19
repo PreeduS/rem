@@ -1,0 +1,5 @@
+
+type Resolution {
+    id: String!
+    name: String!
+}

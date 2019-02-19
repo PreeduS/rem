@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon ./index"
+    "start": "nodemon --exec babel-node ./index.js",
+    "start2": "babel-node ./index.js"
   },
   "author": "",
   "license": "ISC",
@@ -12,9 +13,13 @@
     "cors": "^2.8.5",
     "express": "^4.16.4",
     "express-graphql": "^0.7.1",
-    "graphql": "^14.0.2"
+    "graphql": "^14.0.2",
+    "graphql-tools": "^4.0.3"
   },
   "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "babel-plugin-inline-import": "^3.0.0",
     "nodemon": "^1.18.7"
   }
 }
