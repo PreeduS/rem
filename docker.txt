@@ -1,0 +1,93 @@
+
+
+
+
+docker images                   #list images
+                                #alias:                
+                                    #docker image ls
+                                #-a,--all
+
+
+docker ps                       #list containers
+                                #alias:                 
+                                    #docker container ls
+                                #-a,--all
+                                
+#--------------------------------------------------------------------------------------------------------------
+docker build                    #Build an image from a Dockerfile             
+                                #alias:
+                                    #docker image build
+                                #-t, --tag                              #Name and optionally a tag in the 'name:tag' format
+
+                                    
+Usage:  docker build [OPTIONS] PATH | URL | -
+
+#--------------------------------------------------------------------------------------------------------------
+docker run                      #run a command in a new container
+                                #alias:
+                                    #docker container run 
+                                #Options:	
+                                #-i, --interactive                      #Keep STDIN open even if not attached
+                                #-t, --tty                              #Allocate a pseudo-TTY
+                                #-v, --volume list                      #Bind mount a volume
+                                #-w, --workdir string                   #Working directory inside the container
+                                #-d, --detach                           #Run container in background and print container ID
+                                #-e, --env list                         #Set environment variables
+                                #--rm                                   #Automatically remove the container when it exits
+                                #--name string                          #Assign a name to the container
+
+                                 
+Usage:  docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+
+#------------------------
+
+docker create                   #create a new container
+                                #similar commands with: docker run
+                                
+Usage:  docker create [OPTIONS] IMAGE [COMMAND] [ARG...]
+
+#docker run = docker create + docker start
+#------------------------
+
+docker start                    #start one or more stopped containers
+                                #alias:
+                                    #docker container start 
+                                #-a, --attach                           #Attach STDOUT/STDERR and forward signals
+                                #-i, --interactive                      #Attach container's STDIN
+                                
+Usage:  docker start [OPTIONS] CONTAINER [CONTAINER...]
+                                
+                                
+                                
+docker stop                     #stop one or more running containers
+                                #alias:
+                                    #docker container stop 
+
+
+#--------------------------------------------------------------------------------------------------------------
+docker rm                       #remove one or more containers
+                                #alias:
+                                    #docker container rm 
+                                    
+docker rmi                      #remove one or more images
+                                #alias:
+                                    #docker image rm
+        
+#--------------------------------------------------------------------------------------------------------------
+docker exec -it containerRef path     #run a command in a running container
+
+
+
+
+
+
+
+#--------------------------------------------------------------------------------------------------------------
+
+
+
+#docker build --tag=image-tag .                                         #tag image
+#docker run -it image-tag
+#docker run -d -ti --name=container-name image-tag                      #set container name for the running ref
+
+

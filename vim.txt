@@ -10,3 +10,33 @@ i
 
 
 // .vimrc
+
+
+
+
+
+
+
+-----------------
+
+In insert mode, Ctrl-T indents the current line, and Ctrl-D unindents.
+
+#In normal mode:
+>> indent 
+<< unindent
+
+#In visual selections:
+> indent
+< unindent
+
+
+{nrLines}>>
+{nrLines}<<
+
+
+
+
+.		#repeat last action
+
+
+:set shiftwidth=4
