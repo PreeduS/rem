@@ -6,16 +6,19 @@ class Todos extends React.Component<any,any>{
     render(){
         return (
             <TodosContainer>
-                {props => {
+                {props => { 
                     return (
                         <div>
                             {props.todos.map(todo =>
                                 <Todo
                                     key = {todo.id}
                                     title = {todo.title}
-                                    onRemove = {()=>{}
-                                }/>
+                                    onRemove = {() => props.onRemove(todo.id)}
+                                />
                             )}
+                            <br />
+                            <button onClick = { () => props.onAdd() }>Add</button>
+                            <button onClick = { () => props.storeTodos(props.todos) }>StoreTodos</button>
                         </div>
                     );
                 }}
