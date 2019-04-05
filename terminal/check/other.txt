@@ -118,13 +118,15 @@ swap		#second last	#memory size + ~100MB
 ---------------
 
 Boot sector
-Master Boot Record (MBR)		512 bytes
+Master Boot Record (MBR)		512 bytes							#first sector of a data storage device that has been partitioned
 
-Primary boot loader 			446 bytes(Bootstrap code area)
-Partition table					64 bytes(4 primary partition x16)
-Boot signature					2 bytes		# hex: 55 AA
+-Primary boot loader 			446 bytes(Bootstrap code area)
+								#offset 440(dec) - stage 2 start address, data for ljmp
+-Partition table				64 bytes(4 primary partition x16)
+-Boot signature					2 bytes		#hex: 55 AA
 
 
+Volume Boot Record (VBR) 											#first sector of a data storage device that has not been partitioned
 
 
 
@@ -142,3 +144,19 @@ https://www.youtube.com/watch?v=JV0JEM_HPLU&index=2&list=PLl9FKlo0R0vFDzK8Ng3f9o
 
 rsyslog
 inotify 
+----
+0x7C00 to 0x7DFF
+Stage 1 is loaded here by BIOS or another boot loader
+----
+
+
+The BIOS is ignorant of the distinction between VBRs and MBRs, and of partitioning. The firmware simply loads and runs the first sector of the storage device
+
+---------------
+Primary boot loader is to find and load the secondary boot loader (stage 2).It does this by looking through the partition table for an active partition. 
+When it finds an active partition, it scans the remaining partitions in the table to ensure that they're all inactive. When this is verified, 
+the active partition's boot record is read from the device into RAM and executed.
+
+---------------
+dd if=/dev/hda of=mbr.bin bs=512 count=1
+od -xa mbr.bin									#prints the binary file in hex and ASCII formats

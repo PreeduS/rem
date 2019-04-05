@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node ./index.js",
-    "start2": "babel-node ./index.js"
+    "start": "set BABEL_DISABLE_CACHE=1 && nodemon --exec babel-node ./index.js",
+    "start2": "set BABEL_DISABLE_CACHE=1 &&  babel-node ./index.js"
   },
   "author": "",
   "license": "ISC",
@@ -14,7 +14,8 @@
     "express": "^4.16.4",
     "express-graphql": "^0.7.1",
     "graphql": "^14.0.2",
-    "graphql-tools": "^4.0.3"
+    "graphql-tools": "^4.0.3",
+    "lodash": "^4.17.11"
   },
   "devDependencies": {
     "@babel/core": "^7.2.2",

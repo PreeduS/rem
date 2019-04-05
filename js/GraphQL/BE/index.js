@@ -1,10 +1,13 @@
 const express = require('express');
 const app = express();
 const graphqlHTTP = require('express-graphql');
-const schemaImperative = require('./schemas/imperative/schema');
-const graphqlBuildSchema = require('./schemas/declarative/buildSchema/schema');
-const ExecutableSchema = require('./schemas/declarative/executableSchema/schema');
+//const schemaImperative = require('./schemas/imperative/schema');
+//const graphqlBuildSchema = require('./schemas/declarative/buildSchema/schema');
+//const ExecutableSchema = require('./schemas/declarative/executableSchema/schema');
+const ExecutableSchema = require('./schema');
 const cors = require('cors');
+
+
 
 app.use(cors());
 /*

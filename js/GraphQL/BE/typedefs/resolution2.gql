@@ -1,0 +1,14 @@
+
+type Resolution2 {
+    id2: String!
+    name2: String!
+
+}
+
+extend type Query {
+    resolutions2: [Resolution2]
+}
+
+extend type Mutation {
+    createResolution2: Resolution2
+}
