@@ -1,0 +1,211 @@
+kubectl get nodes       #nodes, pods, deployments, services
+
+#pod - group of containers running on a node
+#node - machine in a cluster
+
+
+#namespace - ex prod,dev,stage
+
+
+#namespace.yml
+
+kind: Namespace
+apiVersion: v1
+metadata:
+    name: demo
+    labels:
+        name: demo
+        
+kubectl create -f namespace.yml
+
+kubectl get pods --namespace demo
+
+
+-------------------------------------------------
+
+#data-tier-deployment.yml
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+    name: example-data-tier
+spec:
+    replicas: 1
+    template:
+        metadata:
+            name: example-data-tier
+            labels:
+                app: example
+                tier: data
+        spec:
+            containers:
+                - name: redis
+                image: "redis:latest"
+                imagePullPolicy: IfNotPresent
+                ports:
+                    - containerPort: 6379
+                      protocol: TCP
+                      
+                      
+                      
+kubectl create -f data-tier-deployment.yml --namespace part1
+kubectl get deployments --namespace part1
+kubectl get pods --namespace part1
+
+kubectl describe pod [idRef] --namespace part1 
+
+
+#app-tier-deployment.yml
+
+...
+spec:
+    ...
+    metadata:
+        name: example-app-tier
+        labels:
+            app: example
+            tier: app
+    spec:
+        containers:
+            - name: server
+            image: 'server-image'
+            ports:
+                - containerPort: 8080
+                  protocol: TCP
+            env:
+                - name: "REDIS_URL"
+                value: "redis://$(EXAMPLE_DATA_TIER_SERVICE_HOST):$(EXAMPLE_DATA_TIER_SERVICE_PORT_REDIS)"
+
+                
+kubectl create -f app-tier-deployment.yml --namespace part1              
+                
+-------------------------------------------------
+
+#data-tier-service.yml
+
+apiVersion: v1
+kind: Service
+metadata: 
+    name: example-data-tier
+spec:
+    selector:               #for containers in deployments at spec:template:metadata:labels
+        app: example
+        tier: data
+    ports:
+        - name: redis
+        protocol: TCP
+        port: 6379
+
+
+
+kubectl create -f data-tier-service.yml --namespace part1
+kubectl get services --namespace part1
+
+kubectl describe service [idRef] --namespace part1 
+
+
+#--------------------------------------------------------------------------------------------------
+
+kubectl get cs              #cs - components status
+                            #rc - replication controllers
+#db-pod.yml
+
+apiVersion: v1
+kind: Pod
+metadata: 
+    name: redis
+    labels:
+        name: redis
+        app: demo
+spec:
+    containers:
+        - name : redis
+        image: redis:latest
+        ports:
+            - containerPort: 6379
+            protocol: TCP
+
+#web-pod.yml
+...
+metadata: 
+    name: web
+    labels:
+        name: web
+        app: demo
+spec:
+    containers:
+        - name : web
+        image: username/web
+        ports:
+            - containerPort: 5000
+            protocol: TCP
+            
+
+            
+--------
+#db-svc.yml
+
+apiVersion: v1
+kind: Service
+metadata: 
+    name: redis
+    labels:
+        name: redis
+        app: demo
+spec:
+    selector:               #for pod at metadata:labels
+        name: redis
+        app: demo
+    ports:
+        - name: redis
+        port: 6379              #exposed port
+        targetPort: 6379        #target port of the container in the pod
+            
+       
+
+
+
+
+#kubectl delete pod web
+#kubectl delete svc web
+       
+       
+#kubectl exec -it web /bin/bash                     #enter pod
+#env
+#curl localhost:5000                                #webserver can access redis db if called from the inside of the container without a service
+
+#create service, check port 32163
+
+
+
+#web-rc.yml                             #similar to pod
+
+apiVersion: v1
+kind: ReplicationController
+metadata: 
+    name: web
+    labels:
+        name: web
+        app: demo
+spec:
+    replicas : 2
+    template:
+        metadata:
+            labels:
+                name: web
+    containers:
+        - name : web
+        image: username/web
+        ports:
+            - containerPort: 5000
+            name: http
+            protocol: TCP
+
+kubectl create -f web-rc.yml
+kubectl get rc
+kubectl scale rc web --replcias=10
+
+
+
+
+            

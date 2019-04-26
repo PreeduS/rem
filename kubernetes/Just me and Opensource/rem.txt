@@ -1,0 +1,72 @@
+#nginx-pod.yaml
+
+apiVersion: v1
+kind: Pod
+metadata:
+    name: nginx             #used by other objects selectors
+spec:
+    containers:
+        - image: nginx
+        name: nginx
+        
+-----------------------------
+#nginx-replicaset.yaml
+
+apiVersion: extensions/v1beta1
+kind: ReplicaSet
+metadata:
+    labels:                     
+        run: nginx              #pods created by ReplicaSet will have this label
+    name: nginx-replicaset
+spec:
+    replicas: 2
+    selectors:
+        matchLabels:
+            run: nginx
+    template:                   #pod template
+        metadata:
+            labels:
+                run: nginx
+        spec:
+            containers:
+                - image: nginx
+                name: nginx
+                
+                
+                
+-----------------------------
+#nginx-deployment.yaml
+#same syntax as ReplicaSet
+#Deployment creates a ReplicaSet
+kind: Deployment
+
+
+
+-----------------------------
+[Kube 8]
+
+kubectl get ns                                  #namespaces
+kubectl --namespace [name] get pods             #-n, --namespace
+kubectl create namespace [name]
+
+kubectl config view
+
+kubectl config get-contexts
+kubectl config set-contexts kubesys --namespace=kube-system --user=kubernetes-admin --cluster=kubernetes
+
+kubectl use-context kubesys 
+
+kubectl get pods
+
+-----------------------------
+
+[Kube 12]
+
+
+
+
+
+
+
+
+

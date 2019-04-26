@@ -1,0 +1,66 @@
+kubectl apply -f ./deployment.yaml 
+
+#create service
+kubectl expose deployment nginx-deployment --type=NodePort 
+#kubectl expose deployment nginx-deployment --type=LoadBalancer --port=8080 --target-port=8080 --name=nginx-load-balancer
+
+#get url
+minikube service nginx-deployment --url
+
+
+
+
+
+
+
+
+#------------------------
+kubectl delete svc nginx-deployment
+#svc, pod
+
+
+kubectl get pods
+kubectl get svc
+kubectl get deployment
+kubectl get nodes
+
+kubectl describe pod <id>
+kubectl describe svc <id>
+kubectl describe deployment <id>
+kubectl describe node <id>
+
+kubectl exec -it <id> bash
+
+kubectl scale --replicas=2 deployment/nginx-deployment
+
+
+#get status
+kubectl rollout status deployment nginx-deployment
+
+
+#update image
+#nginx - from template:spec:containers:name
+kubectl set image deployment/nginx-deployment nginx=nginx:latest
+
+kubectl rollout history deployment nginx-deployment
+kubectl rollout history deployment nginx-deployment --revision=3
+
+#kubectl label node minikube storageType=ssd
+
+
+#apply updated changes
+kubectl apply -f ./deployment.yaml
+
+spec:template:spec:
+    nodeSelector:
+        storageType:ssd
+
+#-----
+
+labels - key/value pairs used by selectors
+
+
+#rem - Kubernetes Tutorial 12 | Basic Kubectl
+
+
+

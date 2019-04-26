@@ -1,0 +1,54 @@
+minikube start --vm-driver=hyperv --hyperv-virtual-switch=minikube
+
+
+#run directly without .yaml
+#create deployment
+kubectl run <name> --image=<path> --port=<port>
+
+
+kubectl expose deployment <name> --type=NodePort 
+
+kubectl get pod
+
+
+
+
+
+------------
+CoderJourney - 4
+
+
+
+------------
+Seth Jennings - 3
+
+kubectl get service <name>
+#cluster-ip - internal ip
+#10.254.132.169
+
+service.yaml
+spec:
+    ports:
+        - port : 80             #port of the service    #mandatory
+          targetPort: 8080      #port of container that the service connects to
+                                #default as port
+          nodePort: 30008       #if not provided, value from range is selected
+                                #nodePort range 30000 - 32767   
+                                #accessed from outside
+    selector:
+        app: myapp
+        
+        
+        
+kubectl describe service <name>
+ip:10.254.132.169
+endpoints: pods ips under the service       #172.
+
+
+internal pod can curl service ip
+
+from outside: use node-ip:nodePort
+
+
+NodePort - service listens to port on the node and forwards it to the pod
+
