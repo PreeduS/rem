@@ -1,6 +1,11 @@
 const resolutionsMock = [{
     id: 1,
-    name: 'Resolutions data mock'
+    name: 'Resolutions data mock',
+    subResolution2: {
+        id: 'id-sub',
+        name: 'name-sub',
+
+    }
 }];
 
 
@@ -10,6 +15,7 @@ const resolution = {
             resolutionsMock
         ),
     },
+
     Mutation: {
         createResolution: () => {
             let data = {

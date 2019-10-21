@@ -1,9 +1,18 @@
 const graphqlTools = require('graphql-tools');
 const {makeExecutableSchema} = graphqlTools;
-import Resolution from './typedefs/resolution.gql';
-import Resolution2 from './typedefs/resolution2.gql';
+var fs = require('fs');
+//import Resolution from './typedefs/resolution.gql';
+//import Resolution2 from './typedefs/resolution2.gql';
 //import * as _ from 'lodash';
 const merge = require('lodash/merge')
+
+
+const loadDefs = (path) => {
+    return fs.readFileSync(path, 'utf8');
+}
+
+const Resolution= loadDefs('./typedefs/resolution.gql');
+const Resolution2= loadDefs('./typedefs/resolution2.gql');
 
 
 const resolutionResolver = require('./resolvers/resolutionResolver');
@@ -12,6 +21,9 @@ const resolutionResolver2 = require('./resolvers/resolutionResolver2');
 const typeDefs = [`
     type Query {
         test: String
+        resolutions: [Resolution]
+        resolutions2: [Resolution2]
+        subResolution2: SubResolution2
     }
     
     `,`

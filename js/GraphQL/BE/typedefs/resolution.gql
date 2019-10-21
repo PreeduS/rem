@@ -2,9 +2,6 @@
 type Resolution {
     id: String!
     name: String!
-}
-
-extend type Query {
-    resolutions: [Resolution]
+    subResolution2: SubResolution2
 }
 

@@ -7,7 +7,26 @@ const graphqlHTTP = require('express-graphql');
 const ExecutableSchema = require('./schema');
 const cors = require('cors');
 
-
+import {ping, createIndex, addDocument, searchDocument} from './elasticsearch/client'
+//ping();
+// createIndex('blog');
+/*
+addDocument({
+    index: 'blog',
+    type:'post',
+    id:1,
+    body: {
+        "PostName": "Integrating Elasticsearch Into Your Node.js Application",
+        "PostType": "Tutorial",
+        "PostBody": "This is the text of our tutorial about using Elasticsearch in your Node.js application.",
+    }
+})
+*/
+searchDocument({
+    index: 'blog',
+    type:'post',
+    q: 'PostName:Node.js'
+})
 
 app.use(cors());
 /*
@@ -23,7 +42,6 @@ app.use('/graphql', graphqlHTTP({
     rootValue: graphqlBuildSchema.resolvers
 }));
 */
-
 
 app.use('/graphql', graphqlHTTP({
     schema: ExecutableSchema.schema,

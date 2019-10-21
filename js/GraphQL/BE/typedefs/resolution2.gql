@@ -2,11 +2,13 @@
 type Resolution2 {
     id2: String!
     name2: String!
-
+    subResolution2: SubResolution2
 }
 
-extend type Query {
-    resolutions2: [Resolution2]
+type SubResolution2{
+    id: String!
+    name: String!
+    sub2Resolution2:  SubResolution2
 }
 
 extend type Mutation {
